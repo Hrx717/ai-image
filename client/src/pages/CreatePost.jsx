@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {preview} from '../assets'
 import {getRandomPrompt} from '../utils'
@@ -15,11 +15,13 @@ const CreatePost = () => {
   const [generatingImage, setGeneratingImage] = useState(false)
   const [loading, setLoading] = useState(false);
 
+  // const localUrl = 'http://localhost:8000';
+  const prodUrl = 'https://aigen-jqmv.onrender.com'
   const generateImage = async () => {
     if(form.prompt) {
       try {
         setGeneratingImage(true);
-        const response = await fetch('http://localhost:8000/api/v1/dalle', {
+        const response = await fetch(`${prodUrl}/api/v1/dalle`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -49,7 +51,7 @@ const CreatePost = () => {
       try {
         setLoading(true);
 
-        const response = await fetch('http://localhost:8000/api/v1/post', {
+        const response = await fetch(`${prodUrl}/api/v1/post`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

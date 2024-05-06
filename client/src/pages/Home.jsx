@@ -23,7 +23,9 @@ const Home = () => {
             try {
                 setLoading(true);
                 
-                const response = await fetch('http://localhost:8000/api/v1/post', {
+                // const localUrl = 'http://localhost:8000/';
+                const prodUrl = 'https://aigen-jqmv.onrender.com'
+                const response = await fetch(`${prodUrl}/api/v1/post`, {
                     method: 'GET',
                     headers: {
                     'Content-Type': 'application/json',
